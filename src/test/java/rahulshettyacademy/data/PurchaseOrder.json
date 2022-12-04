@@ -1,0 +1,22 @@
+[
+{
+
+	"email" : "standard_user",
+	"password" : "secret_sauce",
+	"product" : "Sauce Labs Backpack"
+	
+},
+
+{
+	"email" : "problem_user",
+	"password" : "secret_sauce",
+	"product" : "Sauce Labs Bike Light"
+},
+
+{
+	"first" : "search",
+	"last" : "engine",
+	"codes" : "yes"
+}
+
+]
