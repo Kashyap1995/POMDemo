@@ -6,6 +6,8 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -17,6 +19,8 @@ import rahulshettyacademy.pom.ProductCatalog;
 import rahulshettyacademy.testcompo.BaseTest;
 
 public class Submitordertest  extends BaseTest{
+	private static Logger Log=	LogManager.getLogger(Submitordertest.class.getName());
+
 
 	String productName = "Sauce Labs Backpack";
 
@@ -25,15 +29,19 @@ public class Submitordertest  extends BaseTest{
 	public void submitOrder(HashMap<String,String> input) throws IOException, InterruptedException
 	{
 	
-		
+		//Log.debug("User enter email and password");
+
 		//LandingPage landpage =	launchApplication();
 		ProductCatalog pcata = landpage.loginApplicaion(input.get("email"), input.get("password"));
 		
 		List<WebElement> products= pcata.getProductList();
+		//Log.debug("Add product to cart");
+
 		pcata.addProductToCart(input.get("product"));
 		Thread.sleep(5000);
 		Cartpage cartpage= pcata.goToCartPage();
-				
+	//	Log.error("Product doesn't matched");
+
 
 		Boolean match = cartpage.VerifyProductDisplay(input.get("product"));
 		Assert.assertTrue(match);

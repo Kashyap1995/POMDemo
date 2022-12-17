@@ -28,24 +28,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import rahulshettyacademy.pom.Checkout;
 import rahulshettyacademy.pom.LandingPage;
-import rahulshettyacademy.pom.orderPage;
 
 public class BaseTest {
 
 	public WebDriver driver;
 	public LandingPage landpage;
 	public Checkout checkoutPage;
-	public orderPage order;
 	public WebDriver initializeDriver() throws IOException
 	{
 		
 		Properties pro = new Properties();
 		FileInputStream fis = new FileInputStream(System.getProperty("user.dir")
-				+"\\src\\main\\java\\rahulshettyaca\\resources\\GlobalData.properties");
+				+"\\src\\main\\java\\resources\\GlobalData.properties");
 		pro.load(fis);
 		String browserName = System.getProperty("browser")!=null ? System.getProperty("browser") :pro.getProperty("browser");	
 		// pro.getProperty("browser");	
-
 		if (browserName.contains("chrome")) {
 			ChromeOptions options = new ChromeOptions();
 		WebDriverManager.chromedriver().setup();
@@ -95,9 +92,9 @@ public class BaseTest {
 	{
 		TakesScreenshot ts = (TakesScreenshot)driver;
 		File source = ts.getScreenshotAs(OutputType.FILE);
-		File file = new File(System.getProperty("user.dir") + "//reports//" + testCaseName + ".png");
+		File file = new File(System.getProperty("user.dir") + "//extendreports//" + testCaseName + ".png");
 		FileUtils.copyFile(source, file);
-		return System.getProperty("user.dir") + "//reports//" + testCaseName + ".png";
+		return System.getProperty("user.dir") + "//extendreports//" + testCaseName + ".png";
 		
 		
 	}
@@ -128,7 +125,8 @@ public class BaseTest {
 	@AfterMethod(alwaysRun=true)
 	public void tearDown()
 	{
-		//driver.close();
+		driver.close();
+	
 	}	
 	}
 

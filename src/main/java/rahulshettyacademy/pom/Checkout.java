@@ -34,7 +34,10 @@ public class Checkout extends Abstractcompo {
 	@FindBy(id="continue")
 	WebElement continuecheckout;
 	
-	public Checkout Formfill1(String first, String last, String codes) throws InterruptedException 
+	@FindBy(id="finish")
+	WebElement finished;
+	
+	public void Formfill1(String first, String last, String codes) throws InterruptedException 
 	{
 //		
 //		Actions a = new Actions(driver);
@@ -48,18 +51,25 @@ public class Checkout extends Abstractcompo {
 //		element.sendKeys("380015");
 //		//a.sendKeys(firstname, lastname, code, name).build().perform();
 	
-		firstname.sendKeys("search");
-		Thread.sleep(5000);
-		lastname.sendKeys("engine");
-		Thread.sleep(5000);
+		firstname.sendKeys("jems");
+		Thread.sleep(2000);
+		lastname.sendKeys("test");
+		Thread.sleep(2000);
 
-		code.sendKeys("yes");
-		Thread.sleep(5000);
+		code.sendKeys("380015");
+		Thread.sleep(2000);
 
 		continuecheckout.click();
 		
-		Checkout checkoutPage = new Checkout(driver);
-		return checkoutPage;
+	}
+		
+		public finishtest Submitorder() throws InterruptedException {
+			//Thread.sleep(5000);
+
+			finished.click();
+			return new finishtest(driver);
+			
+		}
 		
 //		Thread.sleep(5000);
 //
@@ -70,12 +80,11 @@ public class Checkout extends Abstractcompo {
 		
 		
 }
+//
+//	public void goTocheck() {
+//		// TODO Auto-generated method stub
+//		driver.get("https://www.saucedemo.com/checkout-step-one.html");
+//
+//	}
 
-	public void goTocheck() {
-		// TODO Auto-generated method stub
-		driver.get("https://www.saucedemo.com/checkout-step-one.html");
 
-	}
-
-
-}
