@@ -24,7 +24,7 @@ public class Submitordertest  extends BaseTest{
 
 	String productName = "Sauce Labs Backpack";
 
-
+	
 	@Test(dataProvider="getData")
 	public void submitOrder(HashMap<String,String> input) throws IOException, InterruptedException
 	{
@@ -42,6 +42,7 @@ public class Submitordertest  extends BaseTest{
 		Cartpage cartpage= pcata.goToCartPage();
 	//	Log.error("Product doesn't matched");
 
+		System.out.println("I am on cart page");
 
 		Boolean match = cartpage.VerifyProductDisplay(input.get("product"));
 		Assert.assertTrue(match);
